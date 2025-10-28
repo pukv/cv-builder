@@ -23,7 +23,7 @@ export default function PreviewWorkExp({
                 {work.jobStartDate} - {work.jobEndDate}
               </div>
             </div>
-            <div className="preview-buttons">
+            <div className="preview-buttons no-print">
               <EditButton
                 isEditing={isEditing}
                 onToggle={onToggleEdit}

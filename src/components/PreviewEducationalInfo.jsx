@@ -23,7 +23,7 @@ export default function PreviewEducationalInfo({
                 {edu.schoolStartDate} - {edu.schoolEndDate}
               </div>
             </div>
-            <div className="preview-buttons">
+            <div className="preview-buttons no-print">
               <EditButton
                 isEditing={isEditing}
                 onToggle={onToggleEdit}

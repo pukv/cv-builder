@@ -19,7 +19,7 @@ export default function PreviewGeneralInfo({
           <h4 className="name">{generalInfo.fullName}</h4>
           <p>{generalInfo.email}</p>
           <p>{generalInfo.phone}</p>
-          <div className="preview-buttons">
+          <div className="preview-buttons no-print">
             <EditButton
               isEditing={isEditing}
               onToggle={onToggleEdit}
