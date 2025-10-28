@@ -3,7 +3,7 @@ export default function EditButton({ isEditing, onToggle, hasData, index }) {
 
   return (
     <button onClick={() => onToggle(index)} className="edit-btn">
-      {isEditing ? "Save" : "Edit"}
+      Edit
     </button>
   );
 }

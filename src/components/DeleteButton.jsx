@@ -1,9 +1,8 @@
-export default function EditButton({ isEditing, onToggle, hasData, index }) {
+export default function DeleteButton({ hasData, onDelete, index }) {
   if (!hasData) return null;
-
   return (
-    <button onClick={() => onToggle(index)} className="edit-btn">
-      {isEditing ? "Save" : "Edit"}
+    <button onClick={() => onDelete(index)} className="delete-btn">
+      Delete
     </button>
   );
 }
