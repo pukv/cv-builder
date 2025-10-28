@@ -1,4 +1,10 @@
-export default function EducationalInformation({ handleAddEducationalInfo }) {
+export default function EducationalInformation({
+  eduForm,
+  setEduForm,
+  handleAddEducationalInfo,
+  isEditing,
+  editingIndex,
+}) {
   return (
     <form onSubmit={handleAddEducationalInfo} className="form-section">
       <h3>Education</h3>
@@ -8,10 +14,20 @@ export default function EducationalInformation({ handleAddEducationalInfo }) {
         type="text"
         id="schoolName"
         placeholder="University Name"
+        value={eduForm.schoolName || ""}
+        onChange={(e) => setEduForm({ ...eduForm, schoolName: e.target.value })}
         required
       />
       <label htmlFor="educationLevel">Education Level:</label>
-      <select name="educationLevel" id="educationLevel" required>
+      <select
+        name="educationLevel"
+        id="educationLevel"
+        value={eduForm.educationLevel || ""}
+        onChange={(e) =>
+          setEduForm({ ...eduForm, educationLevel: e.target.value })
+        }
+        required
+      >
         <option value="">Select Education Level</option>
         <option value="High School">High School</option>
         <option value="Associate Degree">Associate Degree</option>
@@ -21,10 +37,35 @@ export default function EducationalInformation({ handleAddEducationalInfo }) {
         <option value="Certificate">Certificate</option>
       </select>
       <label htmlFor="schoolStartDate">Start Date</label>
-      <input type="date" name="schoolStartDate" id="schoolStartDate" required />
+      <input
+        type="date"
+        name="schoolStartDate"
+        id="schoolStartDate"
+        value={eduForm.schoolStartDate || ""}
+        onChange={(e) =>
+          setEduForm({ ...eduForm, schoolStartDate: e.target.value })
+        }
+        required
+      />
       <label htmlFor="schoolEndDate">End Date</label>
-      <input type="date" name="schoolEndDate" id="schoolEndDate" required />
-      <button type="submit">Add Education</button>
+      <input
+        type="date"
+        name="schoolEndDate"
+        id="schoolEndDate"
+        value={eduForm.schoolEndDate || ""}
+        onChange={(e) =>
+          setEduForm({ ...eduForm, schoolEndDate: e.target.value })
+        }
+        required
+      />
+      <button type="submit">
+        {editingIndex !== null ? "Save Education" : "Add Education"}
+      </button>
+      {isEditing && editingIndex !== null && (
+        <button type="button" onClick={() => setEduForm({})}>
+          Cancel
+        </button>
+      )}
     </form>
   );
 }

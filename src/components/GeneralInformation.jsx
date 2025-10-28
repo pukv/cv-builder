@@ -1,32 +1,46 @@
-export default function GeneralInformation({ handleAddGeneralInfo }) {
+export default function GeneralInformation({
+  generalForm,
+  setGeneralForm,
+  handleAddGeneralInfo,
+  isEditing,
+}) {
   return (
     <form onSubmit={handleAddGeneralInfo} className="form-section">
       <h3>Personal Information</h3>
       <label htmlFor="full-name">Full Name:</label>
       <input
         type="text"
-        name="fullName"
         placeholder="John Smith"
         id="full-name"
+        value={generalForm.fullName || ""}
+        onChange={(e) =>
+          setGeneralForm({ ...generalForm, fullName: e.target.value })
+        }
         required
       />
       <label htmlFor="email">Email:</label>
       <input
         type="email"
-        name="email"
         placeholder="john.smith@email.com"
         id="email"
+        value={generalForm.email || ""}
+        onChange={(e) =>
+          setGeneralForm({ ...generalForm, email: e.target.value })
+        }
         required
       />
       <label htmlFor="phone">Phone Number:</label>
       <input
         type="tel"
-        name="phone"
         placeholder="+1 234 567 8900"
         id="phone"
+        value={generalForm.phone || ""}
+        onChange={(e) =>
+          setGeneralForm({ ...generalForm, phone: e.target.value })
+        }
         required
       />
-      <button type="submit">Add</button>
+      <button type="submit">{isEditing ? "Save" : "Add"}</button>
     </form>
   );
 }
