@@ -1,3 +1,9 @@
+import Title from "./Title.jsx";
+
 export default function App() {
-  return <h1>Test</h1>;
+  return (
+    <div>
+      <Title />
+    </div>
+  );
 }
