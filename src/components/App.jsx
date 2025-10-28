@@ -4,8 +4,12 @@ import Title from "./components/Title";
 import GeneralInformation from "./components/GeneralInformation";
 import EducationalInformation from "./components/EducationalInformation";
 import WorkExperience from "./components/WorkExperience";
+import PreviewGeneralInfo from "./components/PreviewGeneralInfo";
+import PreviewEducationalInfo from "./components/PreviewEducationalInfo";
+import PreviewWorkExp from "./components/PreviewWorkExp";
 
-export default function App() {
+function App() {
+  // State
   const [generalInfo, setGeneralInfo] = useState({});
   const [educationalInfo, setEducationalInfo] = useState([]);
   const [workExp, setWorkExp] = useState([]);
@@ -13,6 +17,7 @@ export default function App() {
   const [isEditingEdu, setIsEditingEdu] = useState(false);
   const [isEditingWork, setIsEditingWork] = useState(false);
 
+  // Handlers
   const handleAddGeneralInfo = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -22,7 +27,6 @@ export default function App() {
       phone: formData.get("phone"),
     };
     setGeneralInfo(newGeneralInfo);
-    console.log("General info added:", newGeneralInfo);
     e.target.reset();
   };
 
@@ -36,7 +40,6 @@ export default function App() {
       schoolEndDate: formData.get("schoolEndDate"),
     };
     setEducationalInfo([...educationalInfo, newEducationalInfo]);
-    console.log("Education added:", newEducationalInfo);
     e.target.reset();
   };
 
@@ -50,8 +53,20 @@ export default function App() {
       jobEndDate: formData.get("jobEndDate"),
     };
     setWorkExp([...workExp, newWorkExp]);
-    console.log("Work experience added:", newWorkExp);
     e.target.reset();
+  };
+
+  // Delete handlers
+  const deleteGeneralInfo = () => {
+    setGeneralInfo({});
+  };
+
+  const deleteEducation = (index) => {
+    setEducationalInfo(educationalInfo.filter((_, i) => i !== index));
+  };
+
+  const deleteWorkExp = (index) => {
+    setWorkExp(workExp.filter((_, i) => i !== index));
   };
 
   return (
@@ -65,7 +80,30 @@ export default function App() {
           />
           <WorkExperience handleAddWorkExperience={handleAddWorkExperience} />
         </div>
+
+        <div className="preview">
+          <PreviewGeneralInfo
+            generalInfo={generalInfo}
+            isEditing={isEditingGeneral}
+            onToggleEdit={() => setIsEditingGeneral(!isEditingGeneral)}
+            onDelete={deleteGeneralInfo}
+          />
+          <PreviewEducationalInfo
+            educationalInfo={educationalInfo}
+            isEditing={isEditingEdu}
+            onToggleEdit={() => setIsEditingEdu(!isEditingEdu)}
+            onDelete={deleteEducation}
+          />
+          <PreviewWorkExp
+            workExp={workExp}
+            isEditing={isEditingWork}
+            onToggleEdit={() => setIsEditingWork(!isEditingWork)}
+            onDelete={deleteWorkExp}
+          />
+        </div>
       </div>
     </div>
   );
 }
+
+export default App;
