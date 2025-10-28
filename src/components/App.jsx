@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./App.css";
-import Title from "./components/Title";
-import GeneralInformation from "./components/GeneralInformation";
-import EducationalInformation from "./components/EducationalInformation";
-import WorkExperience from "./components/WorkExperience";
-import PreviewGeneralInfo from "./components/PreviewGeneralInfo";
-import PreviewEducationalInfo from "./components/PreviewEducationalInfo";
-import PreviewWorkExp from "./components/PreviewWorkExp";
+import Title from "./Title";
+import GeneralInformation from "./GeneralInformation";
+import EducationalInformation from "./EducationalInformation";
+import WorkExperience from "./WorkExperience";
+import PreviewGeneralInfo from "./PreviewGeneralInfo";
+import PreviewEducationalInfo from "./PreviewEducationalInfo";
+import PreviewWorkExp from "./PreviewWorkExp";
 
 function App() {
   // Display state
